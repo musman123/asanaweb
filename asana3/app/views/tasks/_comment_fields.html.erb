@@ -1,0 +1,12 @@
+<div class='nested-fields'>
+<p>
+<%= f.label :AddComment %><br>
+<%= f.text_field :body%>
+</p>
+<%= f.label :photoForComment %>
+<%= f.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg' %> 
+<p>
+<p>
+    <%= link_to_remove_association "remove task", f %>
+</p>
+</div>
