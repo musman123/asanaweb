@@ -1,0 +1,44 @@
+<h1> Sign Up User </h1>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %> prohibited
+      this user from being saved:
+    </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name , placeholder: "Write Name"%>
+    </p>
+    <p>
+      <%= f.label :email  %><br>
+      <%= f.text_field :email, placeholder: "Write Email" %>
+    </p>
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password, placeholder: "Write Password"%>
+    </p>
+    <p>
+    <%= f.label :password_conformation %><br>
+    <%= f.password_field :password_conformation , placeholder: "Write Password Again"%>
+  </p>
+
+  <p>
+  <%= f.fields_for :picture do |s| %>
+    <div>
+      <%= s.label :photo %>
+      <%= s.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg', placeholder: "Add Picture" %> 
+    </div>
+  <% end %>
+  </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>

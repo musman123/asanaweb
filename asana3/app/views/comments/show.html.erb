@@ -1,0 +1,15 @@
+<% @comment.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.body %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+  <%= image_path @comment.picture.photo.url %>
+  </p>
+ 
+<% end %>

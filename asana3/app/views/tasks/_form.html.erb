@@ -1,0 +1,49 @@
+<%= form_for @task do |f| %>
+   <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@task.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :task_description %><br>
+    <%= f.text_area :task_description %>
+  </p>
+  <p>
+   <%= f.label :assigner %><br>
+   <%= collection_select(:user, :user_id, User.all, :id, :name, :prompt => true)%> 
+   </p>
+  <p>
+    <%= f.label :SelectProject %><br>
+    <%= collection_select(:project, :project_id, Project.all, :id, :title,{}, {:multiple => true})%>
+    </p>
+    <p>
+    <%= f.fields_for :picture do |s| %>
+    <div>
+    <%= s.label :photoOfTask %>
+    <%= s.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg' %> 
+    </div>
+    <% end %>
+    </p>
+    <div id="comments">
+    <%= f.fields_for :comments do |task| %>
+      <%= render 'task_fields', :f => task %>
+    <% end %>
+    <div class="links ">
+      <%= link_to_add_association 'add Comment', f, :comments , :render_options => { :wrapper => 'inline' } %>
+    </div>
+  </div>
+  <%= f.button :submit %>
+<% end %>
