@@ -4,13 +4,14 @@
 <th>Task Title</th>
 <th>Task Description</th>
 <th>Creater</th>
-<th>Assigned Using with Id</th>
+<th>Assigned to</th>
 <th>Select User</th>
 <th>All Project </th>
 <th>All Comments</th>
-<th>Image</th>
-<th>Delete Comments</th>
-<th>Update Comments</th>
+<th>Show image & comments</th>
+<th>Edit Tasks</th>
+<th>Update Task</th>
+<th>Delete Task </th>
 </tr>
 <% @tasks.each do |task| %>
 <tr>
@@ -18,10 +19,10 @@
 <td><%= task.name %></td>
 <td><%= task.task_description %></td>
 <td><%= task.assigner %></td>
-<td><%= task.assign_to %></td>
+<td><%= task.user('&&') %></td>
 <td><%= collection_select(:user, :user_id, User.all, :id, :name, {:prompt => true }, onchange: "assign_task(this);")%></td>
-<td><%= task.all_project %></td>
-<td><%= task.all_comments%></td>
+<td><%= task.projects.pluck(:title).join('&&') %></td>
+<td><%= task.comments.pluck(:body).join('&&') %></td>
 <td><%= link_to 'Show', task_path(task) %></td>
 <td><%= link_to 'Edit', edit_task_path(task) %></td>
 <td><%= link_to 'Destroy', task_path(task),
