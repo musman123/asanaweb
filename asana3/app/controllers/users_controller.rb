@@ -43,10 +43,9 @@ class UsersController < ApplicationController
                    redirect_to @user , notice: 'User successfully updated.'
               else
                    render :edit,  notice: 'User Not Updated Matched.' 
-          end
+              end
         else 
-          render :edit,  notice: 'Password Not Matched.'
-           
+          render :edit,  notice: 'Password Not Matched.'     
         end
       end
 
