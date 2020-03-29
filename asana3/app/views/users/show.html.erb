@@ -1,21 +1,26 @@
-<br><br>
-<%= link_to 'Click here to go back', users_path %>
-<p>
-  <strong>name:</strong>
-  <%= @user.name %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-<p>
-  <strong>Password-Conformation:</strong>
-  <%= @user.password_conformation%>
-</p>
-<p>
-<%= image_tag @user.picture.photo.url %>
-</p>
+  <br><br>
+  <%= link_to 'Click here to go back', users_path %>
+ 
+  <p>
+    <strong>name:</strong>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </p>
+
+  <p>
+    <strong>Password-Conformation:</strong>
+    <%= @user.password_conformation%>
+  </p>
+  
+  <p>
+  <%= image_tag @user.picture.photo.url %>
+  </p>
