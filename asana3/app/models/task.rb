@@ -6,6 +6,5 @@ class Task < ActiveRecord::Base
     accepts_nested_attributes_for :comments ,reject_if: :all_blank, allow_destroy: true
     has_one   :picture, as: :pictureable
     accepts_nested_attributes_for :picture ,reject_if: :all_blank , allow_destroy: true
-    accepts_nested_attributes_for :user ,reject_if: :all_blank , allow_destroy: true
-   
+    accepts_nested_attributes_for :user ,reject_if: :all_blank , allow_destroy: true 
 end
