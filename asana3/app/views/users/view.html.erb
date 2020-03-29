@@ -1,20 +1,20 @@
-<h1>Whole information</h1>
+  <h1>Whole information</h1>
 
-<%= link_to 'Log In', 'login' %>
-<table>
-  <tr>
-    <th>whole</th>
-    <th>il</th>
-    <th>Password</th>
-  </tr>
- 
-  <% @users.each do |user| %>
+  <%= link_to 'Log In', 'login' %>
+  <table>
     <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.password %></td>
+      <th>whole</th>
+      <th>il</th>
+      <th>Password</th>
     </tr>
-  <% end %>
-</table>
-<br>
-<%= link_to 'Sign Up', new_user_path %>
+  
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= link_to 'Sign Up', new_user_path %>
