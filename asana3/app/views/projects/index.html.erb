@@ -1,26 +1,23 @@
-<h1 Welcome to the Asana </h1>
-<table>
-  <tr>
-  <th>Title &nbsp; &nbsp; &nbsp;</th>
-  <th>Description</th>
-  <th>Dept</th>
-  <th>Show img <th>
-  <th>Edit</th>
-  <th>Delete</th>
-  </tr>
+    <h1 Welcome to the Asana </h1>
+    <table>
+      <tr>
+      <th>Title</th>
+      <th>Descrip</th>
+      <th>All Detail<th>
+      <th>Edit</th>
+      <th>Delete</th>
+      </tr>
+      <% @projects.each do |project| %>  
+        <tr>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= link_to 'Show', project_path(project) %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project_path(project),
+                method: :delete,
+                data: { confirm: 'Are you sure to delete Task?' } %></td>
+      </tr>
+    <% end %>
 
-  <% @projects.each do |project| %>  
-    <tr>
-    <td><%= project.title %></td>
-    <td><%= project.description %></td>
-    <td><%= project.department %></td>
-    <td><%= link_to 'Show', project_path(project) %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project_path(project),
-            method: :delete,
-            data: { confirm: 'Are you sure to delete Task?' } %></td>
-  </tr>
-<% end %>
-
-</table>
-  <%= link_to 'Add New Project', new_project_path %>
+    </table>
+      <%= link_to 'Add New Project', new_project_path %>
