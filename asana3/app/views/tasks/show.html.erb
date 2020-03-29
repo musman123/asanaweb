@@ -1,14 +1,13 @@
-<h2>Comments Of Task and Task Picture</h2>
-<strong>Picture Of Task:</strong>
-<br><br>
-<%= image_path @task.picture.photo.url %>
-<% @task.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  
-<% end %>
+      <h2>Comments Of Task and Task Picture</h2>
+      <strong>Picture Of Task:</strong>
+      <br><br>
+      <%= image_path @task.picture.photo.url %>
 
-<br><br>
-<%= link_to 'CLick Here to go back', tasks_path %>
+      <% @task.comments.each do |comment| %>
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.body %>
+        </p> 
+      <% end %>
+      <br><br>
+      <%= link_to 'CLick Here to go back', tasks_path %>
