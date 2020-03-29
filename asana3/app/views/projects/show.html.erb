@@ -1,17 +1,13 @@
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-<p>
-  <strong>Department:</strong>
-  <%= @project.department %>
-</p>
-<p>
-<%= image_path @project.picture.photo.url %>
-</p>
-<%= link_to 'Back', projects_path %>
+  <p>
+      <strong>Title:</strong>
+      <%= @project.title %>
+    </p>  
+    <p>
+      <strong>Description:</strong>
+      <%= @project.description %>
+    </p>
+    <p>
+    <%= image_path @project.picture.photo.url %>
+    </p>
+    <%= link_to 'Back', projects_path %>
+
