@@ -17,4 +17,5 @@ class ApplicationController < ActionController::Base
   def authorized
     redirect_to '/welcome' unless logged_in?
   end
+  
 end
