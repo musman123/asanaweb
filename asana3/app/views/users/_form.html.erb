@@ -34,15 +34,18 @@
       <%= f.password_field :password_conformation , placeholder: "Write Password Again"%>
       </p>
 
-    <p>
+      <p>
       <%= f.fields_for :picture do |s| %>
+        
       <div>
         <%= s.label :photo %>
         <%= s.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg', placeholder: "Add Picture" %> 
       </div>
-    <% end %>
-    </p>
+
+      <% end %>
+      </p>
+
       <p>
         <%= f.submit %>
       </p>
-    <% end %>
+<% end %>
