@@ -1,33 +1,41 @@
-    <%= form_for(@project) do |f| %>
-      <% if @project.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<%= form_for(@project) do |f| %>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
           <ul>
           <% @project.errors.full_messages.each do |message| %>
             <li><%= message %></li>
+
           <% end %>
           </ul>
         </div>
-      <% end %>
+
+    <% end %>
     <div>
-      <p>
+
+    <p>
       <%= f.label :title %><br>
       <%= f.text_field :title %>
-      </p>
-      <p>
+    </p>
+
+    <p>
       <%= f.label :Description%><br>
       <%= f.text_field :description %>
-      </p>
-      <p>
-      <%= f.fields_for :picture do |s| %>
+    </p>
+
+    <p>
+      <%= f.fields_for :picture do |s| %>\
+
       <div>
       <%= s.label :photo %>
       <%= s.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg' %> 
     </div>
+
     <% end %>
     </p>
+
     <p>
       <%= f.submit %>
     </p>
-    <% end %>
-    </div>
+  <% end %>
+  </div>
