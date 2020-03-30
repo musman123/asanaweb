@@ -1,49 +1,54 @@
-    <table>
-    <tr>
-    <th>Task Id </th>
-    <th>Task Title</th>
-    <th>Task Description</th>
-    <th>Creater</th>
-    <th>Assigned to</th>
-    <th>Task Assign To</th>
-    <th>All Project </th>
-    <th>All Comments</th>
-    <th>Show image & comments</th>
-    <th>Update Task</th>
-    <th>Delete Task </th>
-    </tr>
-    <% @tasks.each do |task| %>
-    <tr>
-    <td><%= task.id %></td>
-    <td><%= task.name %></td>
-    <td><%= task.task_description %></td>
-    <td><%= task.assigner %></td>
-    <td><%= task.user.name if task.user%></td>
-    <td><%= collection_select(:user, :user_id, User.all, :id, :name, {:prompt => true }, onchange: "assign_task(this);")%></td>
-    <td><%= task.projects.pluck(:title) %></td>
-    <td><%= task.comments.pluck(:body)%></td>
-    <td><%= link_to 'Show', task_path(task) %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task_path(task),
-                  method: :delete,
-                  data: { confirm: 'Are you sure to delete Task?' } %></td>
+  <table>
+    <thead>
+      <tr>
+        <th>Task Id </th>
+        <th>Task Title</th>
+        <th>Task Description</th>
+        <th>Creater</th>
+        <th>Assigned to</th>
+        <th>Assign Task to</th>
+        <th>All Project </th>
+        <th>All Comments</th>
+        <th>Show image & comments</th>
+        <th>Update Task</th>
+        <th>Delete Task </th>
+      </tr>
+    </thead>
 
-    </tr>
+    <tbody>
+
+      <% @tasks.each do |task| %>
+      <tr>
+          <td><%= task.id %></td>
+          <td><%= task.name %></td>
+          <td><%= task.task_description %></td>
+          <td><%= task.assigner %></td>
+          <td><%= task.user.name if task.user%></td>
+          <td><%= collection_select(:user, :user_id, User.all, :id, :name, {:prompt => true }, onchange: "assign_task(this);")%></td>
+          <td><%= task.projects.pluck(:title) %></td>
+          <td><%= task.comments.pluck(:body)%></td>
+          <td><%= link_to 'Show', task_path(task) %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task_path(task),
+                    method: :delete,
+                    data: { confirm: 'Are you sure to delete Task?' } %></td>
+
+     </tr>
     <% end %>
-    </table>
+    </tbody>
+</table>
+ <%= link_to 'Add New Task ', new_task_path %>
 
-      <%= link_to 'Add New Task ', new_task_path %>
-    <script>
-    function assign_task(taskcurrent){
-      var taskid = $(taskcurrent).parents("tr").find("td:first").html(); 
-      $.ajax({
-        url:'/selecteduser?user='+ $(taskcurrent).val()  + '&taskid=' + taskid,
-        type:'get',
-        success: function(data) {
-          debugger
-        var s =  $(taskcurrent).parents('tr').find('td:nth-last-child(7)').html($(taskcurrent).children("option:selected").text())  
-        
-        }
-      });
-    }
-    </script>
+  <script>
+      function assign_task(taskcurrent){
+        var taskid = $(taskcurrent).parents("tr").find("td:first").html(); 
+        $.ajax({
+          url:'/selecteduser?user='+ $(taskcurrent).val()  + '&taskid=' + taskid,
+          type:'get',
+          success: function(data) {
+          var columno =  $(taskcurrent).parents('tr').find('td:nth-last-child(7)').html($(taskcurrent).children("option:selected").text())  
+     
+          }
+        });
+      }
+   </script>
