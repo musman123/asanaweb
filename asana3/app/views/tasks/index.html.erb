@@ -46,9 +46,15 @@
           url:'/selecteduser?user='+ $(taskcurrent).val()  + '&taskid=' + taskid,
           type:'get',
           success: function(data) {
+         
           var columno =  $(taskcurrent).parents('tr').find('td:nth-last-child(7)').html($(taskcurrent).children("option:selected").text())  
-     
+          var setdropdown = getCookie("Cookie");
           }
         });
       }
-   </script>
+      function getCookie(name) {
+        var re = new RegExp(name + "=([^;]+)");
+        var value = re.exec(assign_task.cookie);
+        return (value != null) ? unescape(value[1]) : null;
+    }
+  </script>
