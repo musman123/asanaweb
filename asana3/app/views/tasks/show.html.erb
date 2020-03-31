@@ -1,15 +1,23 @@
 <h2>Comments Of Task and Task Picture</h2>
-      <strong>Picture Of Task:</strong>
-      <br><br>
+    <strong>Picture Of Task:</strong>
+    <br><br> 
 
-      <%= image_path @task.picture.photo.url %>
-      <% @task.comments.each do |comment| %>  
+    <% if @task.picture.present? %>
+        <strong>Picture:</strong>
+        <%= image_path @task.picture.photo.url %>
+    <% else %>
+        <strong>Image is not Selected _forr Task:</strong>
+        <%= image_tag 'image is missing.jpg' %>
+    <% end %>
+
+    <% @task.comments.each do |comment| %>  
         <p>
           <strong>Comment:</strong>
           <%= comment.body %>
         </p> 
-
-      <% end %>
+        <%= image_path comment.picture %>
+    <% end %>
       
     <br><br>
+    
 <%= link_to 'CLick Here to go back', tasks_path %>
