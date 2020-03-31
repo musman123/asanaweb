@@ -7,10 +7,17 @@
       <strong>Description:</strong>
       <%= @project.description %>
     </p>
-
-    <p>
-    <%= image_path @project.picture.photo.url %>
-    </p>
     
-    <%= link_to 'Back', projects_path %>
+     
+    <p>
+    <% if @project.picture.present? %>
+        <strong>Picture:</strong>
+        <%= image_tag @project.picture.photo.url %>
+     <% else %>
+        <strong>Image is not Selected:</strong>
+        <%= image_tag 'image is missing.jpg' %>
+    <% end %>
+        
+    </p>
+<%= link_to 'Back', projects_path %>
 
