@@ -20,7 +20,13 @@
     <strong>Password-Conformation:</strong>
     <%= @user.password_conformation%>
   </p>
-  
+
   <p>
-  <%= image_tag @user.picture.photo.url %>
-  </p>
+    <% if @user.picture.present? %>
+       <strong>Picture:</strong>
+       <%= image_tag @user.picture.photo.url %>
+    <% else %>
+       <strong>Image is not Selected:</strong>
+       <%= image_tag 'image is missing.jpg' %>
+   <% end %>
+</p>
