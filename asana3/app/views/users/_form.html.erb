@@ -1,4 +1,4 @@
-  <h1> Sign Up User </h1>
+    <h1> Sign Up User </h1>
   <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -14,28 +14,28 @@
     </div>
   <% end %>
 
-      <p>
-        <%= f.label :name %><br>
-        <%= f.text_field :name , placeholder: "Write Name"%>
-      </p>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name , placeholder: "Write Name"%>
+  </p>
 
-      <p>
-        <%= f.label :email  %><br>
-        <%= f.text_field :email, placeholder: "Write Email" %>
-      </p>
+  <p>
+    <%= f.label :email  %><br>
+    <%= f.text_field :email, placeholder: "Write Email" %>
+  </p>
 
-      <p>
-        <%= f.label :password %><br>
-        <%= f.password_field :password, placeholder: "Write Password"%>
-      </p>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, placeholder: "Write Password"%>
+  </p>
 
-      <p>
-      <%= f.label :password_conformation %><br>
-      <%= f.password_field :password_conformation , placeholder: "Write Password Again"%>
-      </p>
+  <p>
+    <%= f.label :password_conformation %><br>
+    <%= f.password_field :password_conformation , placeholder: "Write Password Again"%>
+  </p>
 
-      <p>
-      <%= f.fields_for :picture do |s| %>
+  <p>
+    <%= f.fields_for :picture do |s| %>
         
       <div>
         <%= s.label :photo %>
@@ -43,9 +43,10 @@
       </div>
 
       <% end %>
-      </p>
+  </p>
 
-      <p>
-        <%= f.submit %>
-      </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  
 <% end %>
