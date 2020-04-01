@@ -10,9 +10,10 @@ class TasksController < ApplicationController
 
    def new
      @task = Task.new
-     @task.comments.build
+     @img_conn = @task.comments.build
      @task.projects.build
      @task.build_picture
+     @img_conn.build_picture 
    end
 
    def edit
@@ -21,7 +22,7 @@ class TasksController < ApplicationController
 
    def create
      @task = Task.new(task_params)
-
+       debugger
        if @task.save
           assigner = session[:user_id]
           @user = User.find(assigner)
@@ -54,10 +55,10 @@ class TasksController < ApplicationController
    def task_params
      params.require(:task).permit(:id, :name, :task_description, :assigner, :assign_to, :user_id,
      projects_attributes: [:id, :title, :description],
-     comments_attributes: [:id, :commenter, :body, :_destroy],
      picture_attributes: [:id, :photo],
      user_attributes: [:id, :email],
-     project_ids: [] )
+     comments_attributes: [:id, :commenter, :body, :_destroy, picture_attributes: [:id, :photo]],
+     project_ids: [])
    end
 
 end
