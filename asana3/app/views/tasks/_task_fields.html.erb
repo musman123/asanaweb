@@ -6,10 +6,14 @@
 
     <p>
     <p>
+    <%= f.fields_for :picture do |s| %> 
       <div>
-           <%= f.label :photo %>
-           <%= f.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg' %> 
+       <%= s.label :photo %> 
+       <%= s.file_field :photo, as: :file, accept: 'image/png,image/gif,image/jpeg,image/jpg' %> 
+           
       </div>
+
+       <% end %>
     </p>
     <p>
       <%= link_to_remove_association "remove task", f %>
